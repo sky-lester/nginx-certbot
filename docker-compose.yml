@@ -8,9 +8,6 @@ services:
       - "80:80" # Public HTTP Port
       - "443:443" # Public HTTPS Port
     volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
-      - ./logrotate.d/nginx-proxy-manager:/etc/logrotate.d/nginx-proxy-manager
       - ./conf.d/:/etc/nginx/conf.d:ro
     networks:
       - network
