@@ -1,0 +1,23 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      # These ports are in format <host-port>:<container-port>
+      - "80:80" # Public HTTP Port
+      - "443:443" # Public HTTPS Port
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+      - ./logrotate.d/nginx-proxy-manager:/etc/logrotate.d/nginx-proxy-manager
+      - ./certbot/www/:/var/www/certbot/:ro
+      - ./conf.d/:/etc/nginx/conf.d:ro
+    networks:
+      - network
+
+
+networks:
+  network:
+    name: nginx_network
+    driver: bridge
