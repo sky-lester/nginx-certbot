@@ -1,6 +1,6 @@
 services:
   nginx:
-    image: nginx:latest
+    image: nginx:alpine
     container_name: nginx
     restart: unless-stopped
     ports:
@@ -11,8 +11,8 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
       - ./logrotate.d/nginx-proxy-manager:/etc/logrotate.d/nginx-proxy-manager
-      - ./certbot/www/:/var/www/certbot/:ro
-      - ./conf.d/:/etc/nginx/conf.d:ro
+      - ./domain.name/conf.d/:/etc/nginx/conf.d:ro
+      - ./domain.name/:/etc/letsencrypt/live/domain.name:ro
     networks:
       - network
 
