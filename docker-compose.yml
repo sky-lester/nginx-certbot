@@ -11,8 +11,7 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
       - ./logrotate.d/nginx-proxy-manager:/etc/logrotate.d/nginx-proxy-manager
-      - ./domain.name/conf.d/:/etc/nginx/conf.d:ro
-      - ./domain.name/:/etc/letsencrypt/live/domain.name:ro
+      - ./conf.d/:/etc/nginx/conf.d:ro
     networks:
       - network
 
